@@ -6,6 +6,7 @@ import (
 	"github.com/gogf/gf/net/ghttp"
 	"io/ioutil"
 	"os"
+	"strconv"
 	"yj-app/app/model/system/menu"
 	configService "yj-app/app/service/system/config"
 	menuService "yj-app/app/service/system/menu"
@@ -35,7 +36,7 @@ func Index(r *ghttp.Request) {
 			}
 
 		} else {
-			tmp, err := menuService.SelectMenusByUserId(string(user.UserId))
+			tmp, err := menuService.SelectMenusByUserId(strconv.FormatInt(user.UserId,10))
 			fmt.Println(tmp)
 			if err == nil {
 				menus = tmp
